@@ -1,0 +1,198 @@
+﻿<Window x:Class="Word.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Word"
+        mc:Ignorable="d"
+        Title="Word" Height="1080" Width="1920" WindowState="Maximized">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="Open_Executed" />
+        <CommandBinding Command="Save" Executed="Save_Executed" />
+        <CommandBinding Command="Print" Executed="Print_Executed" />
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <Style x:Key="TabItems" TargetType="TabItem">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="Background" Value="#29467F"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="WhiteSmoke"/>
+                    <Setter Property="Foreground" Value="#29467F"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Menuitems" TargetType="{x:Type MenuItem}">
+            <Style.Setters>
+                <Setter Property="Background" Value="#29467F"/>
+                <Setter Property="Foreground" Value="WhiteSmoke"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style.Setters>
+        </Style>
+
+        <Style x:Key="Buttons" TargetType="{x:Type ButtonBase}">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="FontSize" Value="16"/>
+                <!--<Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Background" Value="WhiteSmoke"/>-->
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+
+            <Menu>
+                <MenuItem Header="Файл" FontSize="12" HorizontalAlignment="Center" Style="{StaticResource Menuitems}">
+                <MenuItem Header="Открыть" Command="Open" Style="{StaticResource Menuitems}"/>
+                <MenuItem Header="Сохранить" Command="Save" Style="{StaticResource Menuitems}"/>
+                <MenuItem x:Name="SaveExit" Header="Сохранить и выйти" Style="{StaticResource Menuitems}" Click="SaveExit_Click"/>
+                <MenuItem x:Name="Print_Doc" Header="Печать" Command="Print" Style="{StaticResource Menuitems}"/>
+                <MenuItem x:Name="Exit" Header="Выйти" Click="Exit_Click" Style="{StaticResource Menuitems}"/>
+                </MenuItem>
+            </Menu>
+
+            <TabControl 
+                x:Name="TabBar" 
+                Background="WhiteSmoke" 
+                BorderThickness="0">
+                <TabItem x:Name="Main" Header="Главная" Style="{StaticResource TabItems}">
+                    <TabItem.Content>
+                        <ToolBarTray Background="WhiteSmoke" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <ToolBar Background="WhiteSmoke" VerticalAlignment="Top">
+                                <Button Command="Copy" Style="{StaticResource Buttons}" Content="&#xE8C8;">
+                                    <Button.ToolTip>
+                                        Копировать
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="Paste" Content="&#xE77F;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Вставить
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="Cut" Content="&#xE8C6;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Вырезать
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="SelectAll" Content="&#xE7E6;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Выделить всё
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="Undo" Content="&#xE711;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Отменить
+                                    </Button.ToolTip>
+                                </Button>
+                            </ToolBar>
+                            <ToolBar Background="WhiteSmoke" VerticalAlignment="Top">
+                                <ComboBox x:Name="FontFamily" Width="150" SelectionChanged="FontFamily_SelectionChanged">
+                                    <ComboBox.ToolTip>
+                                        Шрифт
+                                    </ComboBox.ToolTip>
+                                </ComboBox>
+                                <ComboBox x:Name="FontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="FontSize_TextChanged">
+                                    <ComboBox.ToolTip>
+                                        Размер шрифта
+                                    </ComboBox.ToolTip>
+                                </ComboBox>
+                                <Button Command="DecreaseFontSize" Content="&#xE8E7;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Уменьшить шрифт
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="IncreaseFontSize" Content="&#xE8E8;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Увеличить шрифт
+                                    </Button.ToolTip>
+                                </Button>
+                                <ToggleButton x:Name="Bold" Command="EditingCommands.ToggleBold" Content="&#xE8DD;" 
+                                              Style="{StaticResource Buttons}">
+                                    <ToggleButton.ToolTip>
+                                        Полужирный
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <ToggleButton x:Name="Italic" Command="EditingCommands.ToggleItalic" Content="&#xE8DB;" 
+                                        Style="{StaticResource Buttons}">
+                                    <ToggleButton.ToolTip>
+                                        Курсив
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <ToggleButton x:Name="Underline" Command="EditingCommands.ToggleUnderline" Content="&#xE8DC;" 
+                                        Style="{StaticResource Buttons}">
+                                    <ToggleButton.ToolTip>
+                                        Подчёркнутый
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <xctk:ColorPicker Name="FontColorPicker" 
+                                                  SelectedColorChanged="ColorPicker_SelectedColorChanged"></xctk:ColorPicker>
+                            </ToolBar>
+                            <ToolBar Background="WhiteSmoke" VerticalAlignment="Top">
+                                <ToggleButton>
+
+                                </ToggleButton>
+                                <Button Command="AlignLeft" Content="&#xE8E4;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Выровнять по левому краю
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="AlignCenter" Content="&#xE8E3;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Выровнять по центру
+                                    </Button.ToolTip>
+                                </Button>
+                                <Button Command="AlignRight" Content="&#xE8E2;" Style="{StaticResource Buttons}">
+                                    <Button.ToolTip>
+                                        Выровнять по правому краю
+                                    </Button.ToolTip>
+                                </Button>
+                                <ToggleButton Command="ToggleBullets" Content="&#xE8FD;" Style="{StaticResource Buttons}">
+                                    <ToggleButton.ToolTip>
+                                        Маркеры
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <ToggleButton Command="ToggleNumbering" Content="&#xE9D5;" Style="{StaticResource Buttons}">
+                                    <ToggleButton.ToolTip>
+                                        Нумерация
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                            </ToolBar>
+                        </ToolBarTray>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="Insert" Header="Вставка" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Constructor" Header="Конструктор" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Layout" Header="Макет" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Links" Header="Ссылки" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Links2" Header="Рассылки" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Review" Header="Рецензирование" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Look" Header="Вид" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Developer" Header="Разработчик" Style="{StaticResource TabItems}"></TabItem>
+                <TabItem x:Name="Help" Header="Справка" Style="{StaticResource TabItems}"></TabItem>
+            </TabControl>
+        </StackPanel>
+        <RichTextBox x:Name="A4" Grid.Row="1" Grid.RowSpan="2" VerticalScrollBarVisibility="Auto" 
+                     SelectionChanged="A4_SelectionChanged" Margin="240,10.4,240.6,0.4"/>
+    </Grid>
+</Window>
