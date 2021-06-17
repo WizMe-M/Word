@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using Microsoft.Win32;
-using System.IO;
-using Path = System.IO.Path;
 
 namespace Word
 {
@@ -17,7 +16,72 @@ namespace Word
         {
             InitializeComponent();
             FontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
+            FontFamily.SelectedIndex = 21;
             FontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+            FontSize.SelectedIndex = 4;
+        }
+
+        private void SaveCommandBinding(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog SaveDialog = new SaveFileDialog
+            {
+                Filter = "(*.txt)|*.txt|All files (*.*)|*.*"
+            };
+            if ((bool)SaveDialog.ShowDialog())
+            {
+                FileStream fileStream = new FileStream(SaveDialog.FileName, FileMode.Create);
+                TextRange range = new TextRange(Text.Document.ContentStart, Text.Document.ContentEnd);
+                range.Save(fileStream, DataFormats.Text);
+            }
+        }
+        private void OpenCommandBinding(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog OpenDialog = new OpenFileDialog
+            {
+                Filter = "(*.txt)|*.txt|All files (*.*)|*.*"
+            };
+            if ((bool)OpenDialog.ShowDialog())
+            {
+                FileStream fileStream = new FileStream(OpenDialog.FileName, FileMode.Open);
+                TextRange range = new TextRange(Text.Document.ContentStart, Text.Document.ContentEnd);
+                range.Load(fileStream, DataFormats.Text);
+            }
+            
+        }
+        private void PrintCommandBinding(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrintDialog PrintDialog = new PrintDialog();
+            if ((bool)PrintDialog.ShowDialog())
+                PrintDialog.PrintDocument((((IDocumentPaginatorSource)Text.Document).DocumentPaginator), "printing as paginator");           
+        }
+
+        private void FontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(FontFamily.SelectedItem != null)
+                Text.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, FontFamily.SelectedItem);
+        }
+
+        private void FontSize_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Text.Selection.ApplyPropertyValue(Inline.FontSizeProperty, FontSize.Text);
+        }
+
+        private void SaveExit_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog SaveDialog = new SaveFileDialog
+            {
+                Filter = " (*.txt)|*.txt|All files (*.*)|*.*"
+            };
+            if ((bool)SaveDialog.ShowDialog())
+            {
+                TextRange file = new TextRange(Text.Document.ContentStart, Text.Document.ContentEnd);
+                using (FileStream fileStream = File.Create(SaveDialog.FileName))
+                {
+                    if (Path.GetExtension(SaveDialog.FileName).ToLower() == ".txt")
+                        file.Save(fileStream, DataFormats.Text);
+                }
+            }
+            Application.Current.Shutdown();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -25,115 +89,53 @@ namespace Word
             Application.Current.Shutdown();
         }
 
-        private void SaveExit_Click(object sender, RoutedEventArgs e)
+        private void Text_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog SavExt = new SaveFileDialog();
-            SavExt.Filter = " (*.txt)|*.txt|All files (*.*)|*.*";
-            if (SavExt.ShowDialog() == true)
+            //объект, который будет хранить различные настройки выделенного текста
+            object textSelection;
+
+            //жирный
+            textSelection = Text.Selection.GetPropertyValue(Inline.FontWeightProperty);
+            Bold.IsChecked = (textSelection != DependencyProperty.UnsetValue) && (textSelection.Equals(FontWeights.Bold));
+
+            //курсив
+            textSelection = Text.Selection.GetPropertyValue(Inline.FontStyleProperty);
+            Italic.IsChecked = (textSelection != DependencyProperty.UnsetValue) && (textSelection.Equals(FontStyles.Italic));
+
+            //подчеркивание
+            textSelection = Text.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
+            Underline.IsChecked = (textSelection != DependencyProperty.UnsetValue) && (textSelection.Equals(TextDecorations.Underline));
+
+            //шрифт
+            textSelection = Text.Selection.GetPropertyValue(Inline.FontFamilyProperty);
+            FontFamily.SelectedItem = textSelection;
+
+            //размер шрифта
+            textSelection = Text.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            FontSize.Text = textSelection.ToString();
+
+            //маркировка и нумерация
             {
-                TextRange doc = new TextRange(A4.Document.ContentStart, A4.Document.ContentEnd);
-                using (FileStream fs = File.Create(SavExt.FileName))
+                Paragraph start = Text.Selection.Start.Paragraph;
+                Paragraph end = Text.Selection.End.Paragraph;
+                if (end != null && start.Parent is ListItem)
                 {
-                    if (Path.GetExtension(SavExt.FileName).ToLower() == ".txt")
-                        doc.Save(fs, DataFormats.Text);
+                    TextMarkerStyle markerStyle = ((ListItem)end.Parent).List.MarkerStyle;
+                    if (markerStyle == TextMarkerStyle.Disc)
+                    {
+                        ToggleB.IsChecked = true;
+                    }
+                    else if (markerStyle == TextMarkerStyle.Decimal)
+                    {
+                        ToggleN.IsChecked = true;
+                    }
+                }
+                else
+                {
+                    ToggleB.IsChecked = false;
+                    ToggleN.IsChecked = false;
                 }
             }
-            Application.Current.Shutdown();
-        }
-
-        private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            OpenFileDialog Open = new OpenFileDialog();
-            Open.Filter = "(*.txt)|*.txt|All files (*.*)|*.*";
-            if (Open.ShowDialog() == true)
-            {
-                FileStream fileStream = new FileStream(Open.FileName, FileMode.Open);
-                TextRange range = new TextRange(A4.Document.ContentStart, A4.Document.ContentEnd);
-                range.Load(fileStream, DataFormats.Text);
-            }
-        }
-
-        private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            SaveFileDialog Save = new SaveFileDialog();
-            Save.Filter = "(*.txt)|*.txt|All files (*.*)|*.*";
-            if (Save.ShowDialog() == true)
-            {
-                FileStream fileStream = new FileStream(Save.FileName, FileMode.Create);
-                TextRange range = new TextRange(A4.Document.ContentStart, A4.Document.ContentEnd);
-                range.Save(fileStream, DataFormats.Text);
-            }
-        }
-
-        private void Print_Executed(object sender, RoutedEventArgs e)
-        {
-            PrintDialog pd = new PrintDialog();
-            if ((pd.ShowDialog() == true))
-            {
-                FlowDocument doc = new FlowDocument();
-
-                double pageHeight = doc.PageHeight;
-                double pageWidth = doc.PageWidth;
-                Thickness pagePadding = doc.PagePadding;
-                double columnGap = doc.ColumnGap;
-                double columnWidth = doc.ColumnWidth;
-
-                doc.PageHeight = pd.PrintableAreaHeight;
-                doc.PageWidth = pd.PrintableAreaWidth;
-                doc.PagePadding = new Thickness(0);
-
-                doc.ColumnGap = 25;
-                doc.ColumnWidth = (doc.PageWidth - doc.ColumnGap
-                    - doc.PagePadding.Left - doc.PagePadding.Right) / 2;
-
-                doc.PageHeight = pageHeight;
-                doc.PageWidth = pageWidth;
-                doc.PagePadding = pagePadding;
-                doc.ColumnGap = columnGap;
-                doc.ColumnWidth = columnWidth;
-                //pd.PrintVisual(A4 as Visual, "Print Visual");
-                pd.PrintDocument((((IDocumentPaginatorSource)A4.Document).DocumentPaginator), "printing as paginator");
-            }
-
-        }
-
-        private void FontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (FontFamily.SelectedItem != null)
-                A4.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, FontFamily.SelectedItem);
-        }
-
-        private void FontSize_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            A4.Selection.ApplyPropertyValue(Inline.FontSizeProperty, FontSize.Text);
-        }
-
-        private void A4_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            object temp = A4.Selection.GetPropertyValue(Inline.FontWeightProperty);
-            Bold.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontWeights.Bold));
-            temp = A4.Selection.GetPropertyValue(Inline.FontStyleProperty);
-            Italic.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontStyles.Italic));
-            temp = A4.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
-            Underline.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(TextDecorations.Underline));
-
-            temp = A4.Selection.GetPropertyValue(Inline.FontFamilyProperty);
-            FontFamily.SelectedItem = temp;
-            temp = A4.Selection.GetPropertyValue(Inline.FontSizeProperty);
-            FontSize.Text = temp.ToString();
-        }
-
-        private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
-        {
-            Color color = FontColorPicker.SelectedColor ?? Colors.Black;
-            RTBApplyProperty(A4, TextElement.ForegroundProperty, new SolidColorBrush(color));
-        }
-
-        void RTBApplyProperty(RichTextBox richTextBox, DependencyProperty property, object propertyValue)
-        {
-            var selection = A4?.Selection;
-            if (selection != null && propertyValue != null)
-                selection.ApplyPropertyValue(property, propertyValue);
         }
     }
 }

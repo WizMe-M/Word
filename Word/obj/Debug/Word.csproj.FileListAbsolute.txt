@@ -1,66 +1,15 @@
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Word.exe.config
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Word.exe
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Word.pdb
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.csprojAssemblyReference.cache
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\MainWindow.g.cs
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\App.g.cs
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word_MarkupCompile.cache
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word_MarkupCompile.lref
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\MainWindow.baml
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.g.resources
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.Properties.Resources.resources
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.csproj.GenerateResource.cache
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.csproj.CoreCompileInputs.cache
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.exe
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.pdb
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\Xceed.Wpf.Toolkit.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Вадим Гайниев\source\repos\Word\Word\obj\Debug\Word.csproj.CopyComplete
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Word.exe.config
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Word.exe
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Word.pdb
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\Xceed.Wpf.Toolkit.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.csprojAssemblyReference.cache
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\MainWindow.g.cs
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\App.g.cs
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word_MarkupCompile.cache
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word_MarkupCompile.lref
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\MainWindow.baml
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.g.resources
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.Properties.Resources.resources
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.csproj.GenerateResource.cache
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.csproj.CoreCompileInputs.cache
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.csproj.CopyComplete
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.exe
-C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\Word\obj\Debug\Word.pdb
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\bin\Debug\Word.exe.config
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\bin\Debug\Word.exe
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\bin\Debug\Word.pdb
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.csprojAssemblyReference.cache
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\MainWindow.g.cs
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\App.g.cs
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word_MarkupCompile.cache
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word_MarkupCompile.lref
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\MainWindow.baml
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.g.resources
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.Properties.Resources.resources
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.csproj.GenerateResource.cache
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.csproj.CoreCompileInputs.cache
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.exe
+C:\Users\ender\source\repos\Bases of Algorythm and Coding\Word\obj\Debug\Word.pdb
